@@ -1,0 +1,26 @@
+{
+    "name": "Nico Iamaleava: TENN vs OSU",
+    "seller_fee_basis_points": 0,
+    "image": "https://bafybeidaf7dmvdeubrqvr2ttzlgceo52t7iixbkyafx33h4arn6r7e4upq.ipfs.w3s.link/highlightThumbnail.jpg", 
+    "animation_url": "https://bafybeicvcoamggxonyvmswh5zp3kueg7ratqaov5fic6t6lyxpqdfuldry.ipfs.w3s.link/highlight.mp4", 
+    "attributes": [
+        {
+            "trait_type": "Game",
+            "value": "TENN vs OSU"
+        },
+        {
+            "trait_type": "Date",
+            "value": "12/21/24"
+        }
+    ],
+    "external_url": "teamtoa.org",
+    "properties": {
+        "files": [
+            {
+                "uri": "https://bafybeicvcoamggxonyvmswh5zp3kueg7ratqaov5fic6t6lyxpqdfuldry.ipfs.w3s.link/highlight.mp4",
+                "type": "video/mp4" 
+            }
+        ],
+        "category": "video"
+    }
+}

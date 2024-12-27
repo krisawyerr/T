@@ -1,0 +1,17 @@
+{
+    "name": "Team Toa Highlights",
+    "symbol": "TTOAH",
+    "description": "Empowering student-athletes to own their brand by creating sustainable business opportunities through NIL deals.",
+    "image": "https://bafybeictrka2iuqwdjnxob54sqhc5xqhlkrtmi24gm57jfyxd4reh5h2oy.ipfs.w3s.link/Team%20Toa%20(2).png",
+    "external_url": "https://teamtoa.org/",
+    "seller_fee_basis_points": 0,
+    "properties": {
+        "files": [
+            { "uri": "https://bafybeictrka2iuqwdjnxob54sqhc5xqhlkrtmi24gm57jfyxd4reh5h2oy.ipfs.w3s.link/Team%20Toa%20(2).png", "type": "image/png" }
+        ],
+        "category": "image",
+        "creators": [
+            { "address": "FyYVffsSpj1LUERgFs6ghPrzKQ8x73Pu1qd2xxt5XecC", "share": 100 }
+        ]
+    }
+}
