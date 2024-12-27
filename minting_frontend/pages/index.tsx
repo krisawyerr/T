@@ -1,13 +1,14 @@
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { Connection, PublicKey, Transaction, SystemProgram, clusterApiUrl } from '@solana/web3.js';
+import { Connection, PublicKey, SystemProgram, clusterApiUrl, Transaction } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import mintNFT from './api/mint';
+import Image from 'next/image';
 
 const payWallet = process.env.NEXT_PUBLIC_PAY_WALLET;
 
 const Home = () => {
-  const { wallet, publicKey, sendTransaction, connected } = useWallet();
+  const { publicKey, sendTransaction, connected } = useWallet();
   const [status, setStatus] = useState<string>('');
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,14 +18,13 @@ const Home = () => {
     setIsClient(true);
   }, []);
 
-
   const sendSol = async () => {
-    setStatus("")
-    setIsLoading(true)
+    setStatus('');
+    setIsLoading(true);
 
     if (!publicKey) {
       setStatus('Public key is unavailable. Please try reconnecting your wallet.');
-      setIsLoading(false)
+      setIsLoading(false);
       return;
     }
 
@@ -37,13 +37,13 @@ const Home = () => {
       } catch (error) {
         console.error('Error fetching balance:', error);
         setStatus('Failed to fetch wallet balance. Please try again.');
-        setIsLoading(false)
+        setIsLoading(false);
         return;
       }
 
       if (balance < mintCost * 10 ** 9) {
         setStatus('Insufficient funds in your wallet.');
-        setIsLoading(false)
+        setIsLoading(false);
         return;
       }
 
@@ -59,20 +59,25 @@ const Home = () => {
       } catch (error) {
         console.error('Error creating transaction:', error);
         setStatus('Failed to prepare the transaction. Please try again.');
-        setIsLoading(false)
+        setIsLoading(false);
         return;
       }
 
       let signature;
       try {
         signature = await sendTransaction(transaction, connection);
-      } catch (error: any) {
-        if (error.message.includes('User rejected the request')) {
-          console.warn('Transaction rejected by the user:', error);
-          setStatus('Transaction was rejected. Please try again if you change your mind.');
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          if (error.message.includes('User rejected the request')) {
+            console.warn('Transaction rejected by the user:', error);
+            setStatus('Transaction was rejected. Please try again if you change your mind.');
+          } else {
+            console.error('Error sending transaction:', error);
+            setStatus('Failed to send the transaction. Please try again.');
+          }
         } else {
-          console.error('Error sending transaction:', error);
-          setStatus('Failed to send the transaction. Please try again.');
+          console.error('Unexpected error:', error);
+          setStatus('An unexpected error occurred. Please try again.');
         }
         return;
       }
@@ -82,7 +87,7 @@ const Home = () => {
       } catch (error) {
         console.error('Error confirming transaction:', error);
         setStatus('Failed to confirm the transaction. Please check your wallet.');
-        setIsLoading(false)
+        setIsLoading(false);
         return;
       }
 
@@ -97,29 +102,30 @@ const Home = () => {
         console.error('Error minting NFT:', error);
         setStatus('Transaction completed, but minting NFT failed. Please contact support.');
       }
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (error) {
       console.error('Unexpected error during sendSol:', error);
       setStatus('An unexpected error occurred. Please try again.');
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
-
 
   return (
     <div>
       <div className="header">
         <div>
-          <img src="/TeamToa.png" alt="Team Toa" height={50} />
+          <Image src="/TeamToa.png" alt="Team Toa" height={50} width={100} />
         </div>
         <div>{isClient && <WalletMultiButton />}</div>
       </div>
       <div className="body">
         <div className="imageContainer">
-          <img
+          <Image
             src="https://bafybeidaf7dmvdeubrqvr2ttzlgceo52t7iixbkyafx33h4arn6r7e4upq.ipfs.w3s.link/highlightThumbnail.jpg"
             alt="Team Toa"
             className="image"
+            width={600}
+            height={400}
           />
         </div>
         <div>
@@ -132,7 +138,7 @@ const Home = () => {
                 Loading
               </button>
               :
-              <button onClick={connected ? sendSol : undefined} disabled={!connected} className={connected ? 'button' : 'buttonDisabled'} >
+              <button onClick={connected ? sendSol : undefined} disabled={!connected} className={connected ? 'button' : 'buttonDisabled'}>
                 {connected ? 'Mint NFT' : 'Connect Wallet'}
               </button>
             }
