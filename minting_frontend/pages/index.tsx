@@ -114,18 +114,16 @@ const Home = () => {
     <div>
       <div className="header">
         <div>
-          <Image src="/TeamToa.png" alt="Team Toa" height={50} width={100} />
+        <img src="/TeamToa.png" alt="Team Toa" height={50} />
         </div>
         <div>{isClient && <WalletMultiButton />}</div>
       </div>
       <div className="body">
         <div className="imageContainer">
-          <Image
+        <img
             src="https://bafybeidaf7dmvdeubrqvr2ttzlgceo52t7iixbkyafx33h4arn6r7e4upq.ipfs.w3s.link/highlightThumbnail.jpg"
             alt="Team Toa"
             className="image"
-            width={600}
-            height={400}
           />
         </div>
         <div>
