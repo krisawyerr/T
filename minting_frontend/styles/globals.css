@@ -96,9 +96,11 @@ body {
         width: calc(80vw);
         margin: auto;
     }
-    .wallet-adapter-button {
-        color: transparent !important;
-        width: 72px;
-        overflow: hidden;
+}
+@media screen and (max-width: 499px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        height: 106px;
     }
 }

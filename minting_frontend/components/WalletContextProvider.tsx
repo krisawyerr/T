@@ -11,7 +11,7 @@ export const WalletContextProvider: FC<{ children: ReactNode }> = ({ children })
   // Configure the wallets you want to support
   const wallets = [
     new PhantomWalletAdapter(),
-    new SolflareWalletAdapter(),
+    // new SolflareWalletAdapter(),
     // Add more wallets if needed
   ];
 
