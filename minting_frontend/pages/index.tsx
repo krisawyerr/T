@@ -3,7 +3,6 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { Connection, PublicKey, SystemProgram, clusterApiUrl, Transaction } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import mintNFT from './api/mint';
-import Image from 'next/image';
 
 const payWallet = process.env.NEXT_PUBLIC_PAY_WALLET;
 
