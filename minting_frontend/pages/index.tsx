@@ -1,13 +1,13 @@
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { Connection, PublicKey, SystemProgram, clusterApiUrl, Transaction, Cluster } from '@solana/web3.js';
+import { Connection, PublicKey, SystemProgram, clusterApiUrl, Transaction } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
 import mintNFT from './api/mint';
 
 const payWallet = process.env.NEXT_PUBLIC_PAY_WALLET;
 
 const Home = () => {
-  const { publicKey, sendTransaction, connected, wallet } = useWallet();
+  const { publicKey, sendTransaction, connected } = useWallet();
   const [status, setStatus] = useState<string>('');
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
