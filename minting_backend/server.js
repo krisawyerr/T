@@ -15,7 +15,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-    origin: 'http://localhost:3000', 
+    origin: [
+        'http://localhost:3000',
+        "https://teamtoanft-frontend.vercel.app/",
+    ], 
     methods: ['POST'], 
     allowedHeaders: ['Content-Type'], 
 };
