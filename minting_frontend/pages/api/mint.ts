@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = process.env.API_URL || "http://localhost:8800/mint";
+const API_URL = process.env.API_URL || "http://localhost:8800";
 
 export default async function mintNFT(publicKey: string, nftName: string, nftUri: string) {
   try {
-    const response = await axios.post(API_URL, {
+    const response = await axios.post(`${API_URL}/mint`, {
       buyersPublicKey: publicKey,
       nftName: nftName,
       nftUri: nftUri
