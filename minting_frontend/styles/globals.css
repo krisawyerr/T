@@ -39,6 +39,7 @@ body {
     flex-direction: column;
     gap: 10px;
     border-radius: 20px;
+    margin: 0px 20px;
 }
 .main {
     font-size: 20px;
@@ -69,4 +70,35 @@ body {
 }
 .status {
     padding-top: 20px;
+}
+
+@media screen and (max-width: 967px) {
+    .body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .image {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    .image {
+        width: calc(80vw);
+    }
+    .mintContainer {
+        width: calc(80vw - 40px);
+    }
+    .header {
+        padding: 10px 0px;
+        width: calc(80vw);
+        margin: auto;
+    }
+    .wallet-adapter-button {
+        color: transparent !important;
+        width: 72px;
+        overflow: hidden;
+    }
 }
