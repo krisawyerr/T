@@ -17,10 +17,11 @@ const port = process.env.PORT || 5000;
 const corsOptions = {
     origin: [
         'http://localhost:3000',
-        "https://teamtoanft-frontend.vercel.app/",
-    ], 
+        'https://teamtoanft-frontend.vercel.app',
+    ],
     methods: ['POST'], 
     allowedHeaders: ['Content-Type'], 
+    credentials: true, 
 };
 
 app.use(cors(corsOptions)); 
